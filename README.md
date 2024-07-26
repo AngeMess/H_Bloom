@@ -12,6 +12,7 @@ CREATE TABLE tbPacienteA(
     foreign key (UUID_Medicamento) references tbMedicamentosA(UUID_Medicamento)
     
 );
+
 select * from tbPacienteA;
 
 CREATE TABLE tbMedicamentosA(
@@ -21,4 +22,5 @@ CREATE TABLE tbMedicamentosA(
     Hora_aplicacion varchar2(50)
     
 );
+
 select * from tbMedicamentosA;
