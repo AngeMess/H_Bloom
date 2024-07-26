@@ -45,8 +45,9 @@ class PantallaInicio : AppCompatActivity() {
                 val numeroHabitacion = resultSet.getInt("Número_habitacion")
                 val numeroCama = resultSet.getInt("Número_cama")
                 val fechaNacimiento = resultSet.getString("Fecha_nacimiento")
+                val medicamento = resultSet.getString("UUID_Medicamento")
 
-                val unPaciente = tbPacienteA(uuid, nombres, apellidos, edad, enfermedad, numeroHabitacion, numeroCama, fechaNacimiento)
+                val unPaciente = tbPacienteA(uuid, nombres, apellidos, edad, enfermedad, numeroHabitacion, numeroCama, fechaNacimiento, medicamento)
                 listaPacientes.add(unPaciente)
             }
             return listaPacientes

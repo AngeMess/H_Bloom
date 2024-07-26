@@ -1,5 +1,6 @@
 package angelcampos.christianmarin.h_bloom
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -16,6 +17,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import modelo.ClaseConexion
 import modelo.tbMedicamenosA
+import java.util.Calendar
 import java.util.UUID
 
 class AnadirPaciente : AppCompatActivity() {
@@ -38,6 +40,23 @@ class AnadirPaciente : AppCompatActivity() {
         val txtNumeroHab = findViewById<EditText>(R.id.txtNumeroHab)
         val txtNumeroCam = findViewById<EditText>(R.id.txtNumeroCam)
         val btnGuardarPaciente = findViewById<Button>(R.id.btnGruardarPaciente)
+
+        txtFechaNaci.setOnClickListener{
+            val calendario = Calendar.getInstance()
+            val anio = calendario.get(Calendar.YEAR)
+            val mes = calendario.get(Calendar.MONTH)
+            val dia = calendario.get(Calendar.DAY_OF_MONTH)
+            val datePickerDialog = DatePickerDialog(
+                this,
+                { view, anioSeleccionado, mesSeleccionado, diaSeleccionado ->
+                    val fechaSeleccionada =
+                        "$diaSeleccionado/${mesSeleccionado + 1}/$anioSeleccionado"
+                    txtFechaNaci.setText(fechaSeleccionada)
+                },
+                anio, mes, dia
+            )
+            datePickerDialog.show()
+        }
 
 
         fun obtenerMedicamentos(): List<tbMedicamenosA> {
@@ -62,12 +81,10 @@ class AnadirPaciente : AppCompatActivity() {
             val listaMedicamentos = obtenerMedicamentos()
             val nombreMedic = listaMedicamentos.map { it.Nombre_medicamento }
 
-            /*
             withContext(Dispatchers.Main){
-                val miAdaptador = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, nombreMedic)
+                val miAdaptador = ArrayAdapter(this@AnadirPaciente, android.R.layout.simple_spinner_dropdown_item, nombreMedic)
                 spMedicamentos.adapter = miAdaptador
             }
-            */
         }
 
         btnGuardarPaciente.setOnClickListener {
@@ -75,7 +92,7 @@ class AnadirPaciente : AppCompatActivity() {
                 val objConexion = ClaseConexion().cadenaConexion()
                 val medicamento = obtenerMedicamentos()
 
-                val addPaciente = objConexion?.prepareStatement("insert into tbPacientesA (UUID_Paciente, Nombres, Apellidos, Edad, Enfermedad, Número_habitacion, Número_cama, Fecha_nacimiento, UUID_Medicamento) values (?,?,?,?,?,?,?,?,?)")!!
+                val addPaciente = objConexion?.prepareStatement("insert into tbPacienteA (UUID_Paciente, Nombres, Apellidos, Edad, Enfermedad, Número_habitacion, Número_cama, Fecha_nacimiento, UUID_Medicamento) values (?,?,?,?,?,?,?,?,?)")!!
                 addPaciente.setString(1, UUID.randomUUID().toString())
                 addPaciente.setString(2, txtNombresPaciente.text.toString())
                 addPaciente.setString(3, txtApellido.text.toString())
