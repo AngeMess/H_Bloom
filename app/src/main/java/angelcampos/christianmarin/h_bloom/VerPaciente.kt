@@ -26,6 +26,7 @@ class VerPaciente : AppCompatActivity() {
         val NumeroHabitacionRecibido = intent.getIntExtra("Número_habitacion", 0)
         val NumeroCamaRecibido = intent.getIntExtra("Número_cama", 0)
         val FechaNacimientoRecibido = intent.getStringExtra("Fecha_nacimiento")
+        val MedicamentoRecibido = intent.getStringExtra("Medicamentos")
         val textViewNombres = findViewById<TextView>(R.id.textViewNombres)
         val textViewApellidos = findViewById<TextView>(R.id.textViewApellidos)
         val textViewEdad = findViewById<TextView>(R.id.textViewEdad)
@@ -33,6 +34,7 @@ class VerPaciente : AppCompatActivity() {
         val textViewNumeroHab = findViewById<TextView>(R.id.textViewNumeroHab)
         val textViewEnfermedad = findViewById<TextView>(R.id.textViewEnfermedad)
         val textViewNumeroCam = findViewById<TextView>(R.id.textViewNumeroCam)
+        val textViewMedicamento = findViewById<TextView>(R.id.textViewMedicamento)
         textViewNombres.text = NombresRecibido
         textViewApellidos.text = ApellidosRecibido
         textViewEdad.text = EdadRecibido.toString()
@@ -40,5 +42,6 @@ class VerPaciente : AppCompatActivity() {
         textViewNumeroHab.text = NumeroHabitacionRecibido.toString()
         textViewEnfermedad.text = EnfermedadRecibido
         textViewNumeroCam.text = NumeroCamaRecibido.toString()
+        textViewMedicamento.text = MedicamentoRecibido
     }
 }

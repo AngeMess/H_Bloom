@@ -8,5 +8,6 @@ data class tbPacienteA(
     var Enfermedad: String,
     var Número_habitacion: Int,
     var Número_cama: Int,
-    var Fecha_nacimiento: String
+    var Fecha_nacimiento: String,
+    var UUID_Medicamento: String
 )

@@ -40,7 +40,7 @@ class AdaptadorPaciente(var Datos: List<tbPacienteA>): RecyclerView.Adapter<View
         GlobalScope.launch(Dispatchers.IO){
             val objConexion = ClaseConexion().cadenaConexion()
 
-            val updatePaciente = objConexion?.prepareStatement("update tbPacientesA set Nombres =?, Apellidos =?, Edad =?, Enfermedad =?, Número_Habitacion =?, Número_Cama =?, Fecha_nacimiento =? where UUID_Paciente =?")!!
+            val updatePaciente = objConexion?.prepareStatement("update tbPacienteA set Nombres =?, Apellidos =?, Edad =?, Enfermedad =?, Número_Habitacion =?, Número_Cama =?, Fecha_nacimiento =? where UUID_Paciente =?")!!
             updatePaciente.setString(1, NuevoNombre)
             updatePaciente.setString(2, NuevoApellido)
             updatePaciente.setInt(3, NuevaEdad)
@@ -146,6 +146,7 @@ class AdaptadorPaciente(var Datos: List<tbPacienteA>): RecyclerView.Adapter<View
             pantallaVer.putExtra("Número_habitacion", item.Número_habitacion)
             pantallaVer.putExtra("Número_cama", item.Número_cama)
             pantallaVer.putExtra("Fecha_nacimiento", item.Fecha_nacimiento)
+            pantallaVer.putExtra("Medicamentos", item.UUID_Medicamento)
             context.startActivity(pantallaVer)
         }
     }
