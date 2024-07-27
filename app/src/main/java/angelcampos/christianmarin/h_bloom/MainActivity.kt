@@ -8,6 +8,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,12 +24,12 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val btnBienvenida = findViewById<Button>(R.id.btnBienvenida)
-
-        btnBienvenida.setOnClickListener {
-            val intent = Intent(this, PantallaInicio::class.java)
+        GlobalScope.launch(Dispatchers.Main) {
+            delay(3000)
+            val intent = Intent(this@MainActivity, PantallaInicio::class.java)
             startActivity(intent)
             finish()
         }
+
     }
 }
