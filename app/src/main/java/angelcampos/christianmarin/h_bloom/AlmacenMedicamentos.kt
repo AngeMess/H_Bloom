@@ -1,7 +1,9 @@
 package angelcampos.christianmarin.h_bloom
 
 import RecyclerViewHolder.AdaptadorMedicamento
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -53,6 +55,27 @@ class AlmacenMedicamentos : AppCompatActivity() {
                 val adapter = AdaptadorMedicamento(medicamentosBD)
                 rcvMedicamentos.adapter = adapter
             }
+        }
+
+        findViewById<ImageButton>(R.id.btnAgregarPaciente).setOnClickListener {
+            val intent = Intent(this, AnadirPaciente::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+            finish()
+        }
+
+        findViewById<ImageButton>(R.id.btnMenu).setOnClickListener {
+            val intent = Intent(this, PantallaInicio::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+            finish()
+        }
+
+        findViewById<ImageButton>(R.id.btnAgregarMedicamento).setOnClickListener {
+            val intent = Intent(this, AnadirMedicamento::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+            finish()
         }
     }
 }

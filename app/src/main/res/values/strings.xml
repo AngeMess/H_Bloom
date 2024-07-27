@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">H_Bloom</string>
+    <string name="agregar_paciente">Agregar paciente</string>
+    <string name="agregar_medicamento">Agregar medicamento</string>
+    <string name="menu">Menú</string>
 </resources>

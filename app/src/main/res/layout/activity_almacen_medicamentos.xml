@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#272C1EE9"
     tools:context=".AlmacenMedicamentos">
 
     <TextView
@@ -19,11 +20,21 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvMedicamentos"
-        android:layout_width="411dp"
-        android:layout_height="435dp"
+        android:layout_width="0dp"
+        android:layout_height="500dp"
         android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/navbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <include
+        android:id="@+id/navbar"
+        layout="@layout/activity_navbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

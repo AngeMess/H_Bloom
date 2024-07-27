@@ -1,6 +1,8 @@
 package angelcampos.christianmarin.h_bloom
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -35,6 +37,7 @@ class VerPaciente : AppCompatActivity() {
         val textViewEnfermedad = findViewById<TextView>(R.id.textViewEnfermedad)
         val textViewNumeroCam = findViewById<TextView>(R.id.textViewNumeroCam)
         val textViewMedicamento = findViewById<TextView>(R.id.textViewMedicamento)
+        val btnVolver = findViewById<Button>(R.id.btnVolver)
         textViewNombres.text = NombresRecibido
         textViewApellidos.text = ApellidosRecibido
         textViewEdad.text = EdadRecibido.toString()
@@ -43,5 +46,11 @@ class VerPaciente : AppCompatActivity() {
         textViewEnfermedad.text = EnfermedadRecibido
         textViewNumeroCam.text = NumeroCamaRecibido.toString()
         textViewMedicamento.text = MedicamentoRecibido
+
+        btnVolver.setOnClickListener {
+            val intent = Intent(this, PantallaInicio::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

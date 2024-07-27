@@ -30,6 +30,8 @@ class AnadirMedicamento : AppCompatActivity() {
         val txtNombreMed = findViewById<EditText>(R.id.txtNombreMed)
         val txtHoraApli = findViewById<EditText>(R.id.txtHoraApli)
         val btnAgragarMedicamento = findViewById<Button>(R.id.btnAgragarMedicamento)
+        val btnVolverMedicamento = findViewById<Button>(R.id.btnVolverMedicamento)
+        val btnAlmacenMedicamentos = findViewById<Button>(R.id.btnAlmacenMedicamentos)
 
         btnAgragarMedicamento.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
@@ -47,6 +49,18 @@ class AnadirMedicamento : AppCompatActivity() {
                     txtHoraApli.setText("")
                 }
             }
+        }
+
+        btnVolverMedicamento.setOnClickListener {
+            val intent = Intent(this, PantallaInicio::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        btnAlmacenMedicamentos.setOnClickListener {
+            val intent = Intent(this, AlmacenMedicamentos::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

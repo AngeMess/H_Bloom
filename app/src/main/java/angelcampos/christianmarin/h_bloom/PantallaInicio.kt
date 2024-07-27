@@ -1,7 +1,9 @@
 package angelcampos.christianmarin.h_bloom
 
 import RecyclerViewHolder.AdaptadorPaciente
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -29,14 +31,13 @@ class PantallaInicio : AppCompatActivity() {
         val rcvPacientes = findViewById<RecyclerView>(R.id.rcvPacientes)
         rcvPacientes.layoutManager = LinearLayoutManager(this)
 
-        fun obtenerPacientes(): List<tbPacienteA>{
+        fun obtenerPacientes(): List<tbPacienteA> {
             val objConexion = ClaseConexion().cadenaConexion()
-
             val statement = objConexion?.createStatement()
             val resultSet = statement?.executeQuery("select * from tbPacienteA")!!
             val listaPacientes = mutableListOf<tbPacienteA>()
 
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 val uuid = resultSet.getString("UUID_Paciente")
                 val nombres = resultSet.getString("Nombres")
                 val apellidos = resultSet.getString("Apellidos")
@@ -55,10 +56,31 @@ class PantallaInicio : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
             val pacientesBD = obtenerPacientes()
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
                 val adapter = AdaptadorPaciente(pacientesBD)
                 rcvPacientes.adapter = adapter
             }
+        }
+
+        findViewById<ImageButton>(R.id.btnAgregarPaciente).setOnClickListener {
+            val intent = Intent(this, AnadirPaciente::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+            finish()
+        }
+
+        findViewById<ImageButton>(R.id.btnMenu).setOnClickListener {
+            val intent = Intent(this, PantallaInicio::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+            finish()
+        }
+
+        findViewById<ImageButton>(R.id.btnAgregarMedicamento).setOnClickListener {
+            val intent = Intent(this, AnadirMedicamento::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+            finish()
         }
     }
 }

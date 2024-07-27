@@ -5,25 +5,32 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#272C1EE9"
     tools:context=".PantallaInicio">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvPacientes"
-        android:layout_width="410dp"
-        android:layout_height="445dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="600dp"
+        app:layout_constraintBottom_toTopOf="@+id/navbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.483" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="32dp"
-        android:text="Buen dia!"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="177dp"
+        android:layout_marginBottom="49dp"
+        android:text="Bienvenid@ a la app de Bloom!"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,8 +41,14 @@
         android:layout_marginTop="156dp"
         android:text="Pacientes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/navbar"
+        layout="@layout/activity_navbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

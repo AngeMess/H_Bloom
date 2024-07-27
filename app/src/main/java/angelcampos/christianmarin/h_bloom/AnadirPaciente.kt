@@ -1,6 +1,7 @@
 package angelcampos.christianmarin.h_bloom
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -40,6 +41,7 @@ class AnadirPaciente : AppCompatActivity() {
         val txtNumeroHab = findViewById<EditText>(R.id.txtNumeroHab)
         val txtNumeroCam = findViewById<EditText>(R.id.txtNumeroCam)
         val btnGuardarPaciente = findViewById<Button>(R.id.btnGruardarPaciente)
+        val btnVolverPaciente = findViewById<Button>(R.id.btnVolverPaciente)
 
         txtFechaNaci.setOnClickListener{
             val calendario = Calendar.getInstance()
@@ -115,6 +117,12 @@ class AnadirPaciente : AppCompatActivity() {
                     Toast.makeText(this@AnadirPaciente, "Paciente añadido", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+
+        btnVolverPaciente.setOnClickListener {
+            val intent = Intent(this, PantallaInicio::class.java)
+            startActivity(intent)
+            finish()
         }
 
     }
